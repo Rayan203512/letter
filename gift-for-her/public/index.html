@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Pour toi</title>
+<style>
+:root{--nuit:#0b0a1f;--violet:#b36bff;--rose:#ffb6d0}
+*{box-sizing:border-box;margin:0}
+body{min-height:100vh;display:grid;place-items:center;overflow:hidden;color:#fff;
+  font-family:"Palatino Linotype",Palatino,Georgia,serif;
+  background:radial-gradient(1.5px 1.5px at 15% 25%,#fff,transparent),
+    radial-gradient(1px 1px at 70% 15%,#fff,transparent),
+    radial-gradient(1.5px 1.5px at 85% 70%,#fff,transparent),
+    radial-gradient(1px 1px at 30% 80%,#fff,transparent),
+    radial-gradient(ellipse at 80% 0,#2a1f5c,var(--nuit) 65%)}
+.moon{position:fixed;top:6vmin;right:8vmin;width:9vmin;height:9vmin;border-radius:50%;background:#fff;box-shadow:0 0 40px 10px #fff5}
+button{font:inherit;color:inherit;cursor:pointer}
+#start{background:none;border:0;text-align:center;font-size:1.1rem;letter-spacing:.06em}
+#start span{display:block;font-size:5rem;margin-bottom:.5rem;filter:drop-shadow(0 0 18px var(--violet));animation:beat 1.2s infinite}
+@keyframes beat{50%{transform:scale(1.15)}}
+#scene{display:none;text-align:center;width:min(92vw,480px)}
+#scene.show{display:block}
+h1{font-style:italic;font-weight:400;font-size:clamp(2rem,8vw,3rem);color:#e0a8ff;text-shadow:0 0 22px var(--violet);margin-bottom:3vh}
+.bouquet{position:relative;width:min(100%,40vh);margin:0 auto;aspect-ratio:300/420}
+.bouquet>svg{display:block;width:100%;height:100%;overflow:visible}
+.head{transform-box:fill-box;transform-origin:50% 100%;filter:drop-shadow(0 0 5px #b36bff99);animation:open-flower 2s var(--d) backwards}
+@keyframes open-flower{from{transform:scale(0)}}
+#envelope{position:absolute;left:50%;top:63%;width:34%;padding:0;border:0;background:none;transform:translateX(-50%);filter:drop-shadow(0 6px 10px #0006);transition:transform .2s}
+#envelope:hover{transform:translateX(-50%) scale(1.06)}
+#envelope svg{display:block;width:100%}
+#letter{position:fixed;inset:0;display:grid;place-items:center;background:#000a;padding:5vmin}
+#letter[hidden]{display:none}
+.paper{background:#fffdf8;color:#2b2540;width:min(92vw,420px);padding:28px;border:2px dotted #7a6bb0;border-radius:6px;animation:rise .6s ease-out}
+@keyframes rise{from{transform:translateY(30px);opacity:0}}
+.paper h2{font-size:1.1rem;font-style:italic;font-weight:400;margin-bottom:14px}
+#message{white-space:pre-wrap;line-height:1.7;max-height:50vh;overflow:auto}
+#close{margin-top:20px;padding:8px 18px;border:1px solid #7a6bb0;border-radius:6px;background:none;color:#2b2540}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important}}
+</style>
+</head>
+<body>
+<div class="moon"></div>
+
+<button id="start"><span>💜</span>Touche pour ouvrir</button>
+
+<main id="scene">
+  <h1>Des fleurs pour toi</h1>
+  <div class="bouquet"><svg viewBox="0 0 300 420" aria-hidden="true"><defs>
+<radialGradient id="pg" cx=".35" cy=".28" r=".85"><stop offset="0" stop-color="#f1deff"/><stop offset=".35" stop-color="#c88cff"/><stop offset=".75" stop-color="#8b3fe3"/><stop offset="1" stop-color="#5b21aa"/></radialGradient>
+<radialGradient id="pb" cx=".5" cy=".3" r=".9"><stop offset="0" stop-color="#b570f5"/><stop offset="1" stop-color="#5b21aa"/></radialGradient>
+<linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6fcf62"/><stop offset="1" stop-color="#2c8a3c"/></linearGradient>
+<linearGradient id="wg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b06af5"/><stop offset="1" stop-color="#5a22a6"/></linearGradient>
+<g id="tulip" stroke="#4d1a94" stroke-opacity=".45" stroke-width=".8">
+<path fill="url(#pb)" d="M-8,-2C-34,-12 -34,-52 -24,-76C-8,-62 4,-36 4,-4Z"/>
+<path fill="url(#pb)" d="M8,-2C34,-12 34,-52 24,-76C8,-62 -4,-36 -4,-4Z"/>
+<path fill="url(#pg)" d="M0,0C-28,-4 -26,-56 -8,-82C-3,-86 3,-86 8,-82C26,-56 28,-4 0,0Z"/>
+<ellipse cx="-9" cy="-50" rx="5" ry="15" fill="#fff" opacity=".32" stroke="none" transform="rotate(10 -9 -50)"/>
+</g></defs><g fill="url(#wg)"><path d="M150,342C108,322 66,276 56,226C96,232 142,262 166,322Z"/><path d="M150,342C192,322 234,276 244,226C204,232 158,262 134,322Z"/></g><g fill="none" stroke="#43a047" stroke-width="4.5" stroke-linecap="round"><path d="M152 100Q152 215 150 330"/><path d="M56 190Q75 260 150 330"/><path d="M246 190Q227 260 150 330"/><path d="M104 140Q113 235 150 330"/><path d="M198 132Q188 231 150 330"/><path d="M150 185Q150 257 150 330"/></g><g fill="url(#lg)"><path d="M122,300C66,292 52,236 74,208C104,226 130,258 122,300Z"/><path d="M178,300C234,292 248,236 226,208C196,226 170,258 178,300Z"/><path d="M138,290C108,270 104,238 116,222C132,238 144,262 138,290Z"/><path d="M162,290C192,270 196,238 184,222C168,238 156,262 162,290Z"/></g>
+<g fill="none" stroke="#a6e39f" stroke-width="1.5" opacity=".6"><path d="M122,300C95,262 80,235 76,212"/><path d="M178,300C205,262 220,235 224,212"/></g><g transform="translate(152 100) rotate(0) scale(1.0)"><use href="#tulip" class="head" style="--d:1.1s"/></g><g transform="translate(56 190) rotate(-24) scale(0.95)"><use href="#tulip" class="head" style="--d:0.3s"/></g><g transform="translate(246 190) rotate(24) scale(0.95)"><use href="#tulip" class="head" style="--d:0.9s"/></g><g transform="translate(104 140) rotate(-9) scale(1.0)"><use href="#tulip" class="head" style="--d:0.5s"/></g><g transform="translate(198 132) rotate(9) scale(1.0)"><use href="#tulip" class="head" style="--d:0.7s"/></g><g transform="translate(150 185) rotate(0) scale(0.95)"><use href="#tulip" class="head" style="--d:1.3s"/></g><path fill="#6a2ec0" d="M130,394L141,336L159,336L170,394Q150,382 130,394Z"/></svg><button id="envelope" aria-label="Ouvrir la lettre"><svg viewBox="0 0 90 60"><rect width="90" height="60" rx="3" fill="#f8c3d1"/><path d="M0,3L45,36L90,3" fill="#fbd3de" stroke="#eeaabd" stroke-width="1"/><path d="M45,46C34,38 38,29 45,33C52,29 56,38 45,46Z" fill="#f08aa6"/></svg></button></div>
+</main>
+
+<div id="letter" hidden>
+  <div class="paper" role="dialog" aria-labelledby="to">
+    <h2 id="to"></h2>
+    <p id="message"></p>
+    <button id="close">Fermer</button>
+  </div>
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+
+// 1. Le message vient du serveur (jamais écrit en dur dans la page)
+fetch("/api/message")
+  .then((r) => r.json())
+  .then((g) => {
+    $("to").textContent = g.to ? "Pour " + g.to : "Pour toi";
+    $("message").textContent = g.message; // textContent = pas d’injection de code
+  })
+  .catch(() => { $("message").textContent = "Le message n’a pas pu se charger. Réessaie dans un instant 💜"; });
+
+// 2. Les clics : cœur → bouquet → lettre
+$("start").onclick = () => { $("start").hidden = true; $("scene").classList.add("show"); };
+$("envelope").onclick = () => { $("letter").hidden = false; };
+$("close").onclick = () => { $("letter").hidden = true; };
+</script>
+</body>
+</html>

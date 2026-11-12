@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Changer le message</title>
+<style>
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0b0a1f;color:#fff;font-family:system-ui,sans-serif}
+form{width:min(92vw,440px);display:grid;gap:12px;padding:24px 0}
+h1{font-size:1.4rem;margin:0}
+input,textarea,button{font:inherit;padding:12px;border-radius:8px;border:1px solid #4b3d8f;background:#17143a;color:#fff}
+textarea{min-height:180px;resize:vertical}
+button{background:#b36bff;color:#1a0b33;font-weight:600;border:0;cursor:pointer}
+#status{margin:0;min-height:1.4em}
+a{color:#c9a2ff}
+</style>
+</head>
+<body>
+<form id="f">
+  <h1>Changer le message</h1>
+  <input id="to" placeholder="Prénom de la personne" maxlength="60" aria-label="Prénom de la personne">
+  <textarea id="message" placeholder="Ton message…" maxlength="1000" required aria-label="Message"></textarea>
+  <input id="pwd" type="password" placeholder="Mot de passe admin" autocomplete="current-password" required aria-label="Mot de passe admin">
+  <button>Enregistrer le message</button>
+  <p id="status" role="status"></p>
+  <a href="/" target="_blank">Voir la page du cadeau</a>
+</form>
+<script>
+const $ = (id) => document.getElementById(id);
+
+// Pré-remplit le formulaire avec le message actuel
+fetch("/api/message").then((r) => r.json()).then((g) => {
+  $("to").value = g.to;
+  $("message").value = g.message;
+});
+
+// Envoie le nouveau message au serveur, avec le mot de passe dans un en-tête
+$("f").onsubmit = async (e) => {
+  e.preventDefault();
+  const res = await fetch("/api/message", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json", "x-admin-password": $("pwd").value },
+    body: JSON.stringify({ to: $("to").value, message: $("message").value }),
+  });
+  const data = await res.json();
+  $("status").textContent = res.ok ? "Message enregistré. Recharge la page du cadeau." : data.error;
+};
+</script>
+</body>
+</html>
